@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giff App</title>
+  <!-- Latest compiled and minified Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+
+  </head>
+<body class="container text-center ">
+
+<div class="jumbotron">
+  <div class="container">
+    <form action="/v1/gifs" method="post" enctype='application/json'>
+      <div class="form-group">
+        <label >Create New:</label>
+        <input type="text" class="form-control" placeholder="keyword" name="keyword" required>
+        <input type="text" class="form-control" placeholder="description" name="description">
+        <input type="text" class="form-control" placeholder="url" name="url">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+  <br>
+  <div class="container">
+    <form action="/v1/gifs/search" method="get" enctype='application/json'>
+      <div class="form-group">
+        <label >Search:</label>
+        <input type="text" class="form-control" placeholder="keyword" name="q">
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+    <div class="d-flex">
+      <% for (var i = 0; i <gifs.length; i++) { %>
+        <h2><a href="/v1/gifs/delete?q=<%= gifs[i]._id.toString() %> ">X</a></h2>
+        <figure>
+        <img src = <%= gifs[i].url %> width="300" height="300">
+        <figcaption> <%= gifs[i].description %> </div>
+       </figure>
+      <% } %>
+    </div>
+  <!-- </div> -->
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="https://fb.me/react-0.13.3.js"></script>
+<script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+
+<!-- <script  type="text/jsx" src="app.js"></script> -->
+</html>
